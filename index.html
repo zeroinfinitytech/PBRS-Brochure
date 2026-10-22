@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>PBRS - Course Prospectus (Brochure A)</title>
+<style>
+@font-face{font-family:'Playfair Display';font-weight:400;font-style:normal;src:url(fonts/pf-400.ttf)}
+@font-face{font-family:'Playfair Display';font-weight:500;font-style:normal;src:url(fonts/pf-500.ttf)}
+@font-face{font-family:'Playfair Display';font-weight:600;font-style:normal;src:url(fonts/pf-600.ttf)}
+@font-face{font-family:'Playfair Display';font-weight:400;font-style:italic;src:url(fonts/pf-i400.ttf)}
+@font-face{font-family:'Playfair Display';font-weight:500;font-style:italic;src:url(fonts/pf-i500.ttf)}
+@font-face{font-family:'Source Sans 3';font-weight:400;font-style:normal;src:url(fonts/ss-400.ttf)}
+@font-face{font-family:'Source Sans 3';font-weight:500;font-style:normal;src:url(fonts/ss-500.ttf)}
+@font-face{font-family:'Source Sans 3';font-weight:600;font-style:normal;src:url(fonts/ss-600.ttf)}
+:root{
+  --blue:#005699; --deep:#00335c; --sky:#1f93d7; --lime:#9ccb51; --orange:#fc981e; --ink:#041b33;
+  --paper:#f6f2e9; --rule:#c9d3dd; --mute:#44596e;
+  --s2:3mm; --s3:5mm;
+  --outer:11mm; --fold:8mm; --top:14mm; --bot:13.2mm;
+  /* type scale (pt): label 7 | note 7.5 | spec 8 | body 8.6 | h3 10 | h2 17 */
+}
+@page{size:303mm 216mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font-family:'Source Sans 3',sans-serif;color:var(--ink);font-size:8.6pt;line-height:1.45;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;font-variant-numeric:lining-nums;text-wrap:pretty}
+.page{position:relative;width:303mm;height:216mm;overflow:hidden;background:var(--paper) url(img/bg_paper.png);background-size:42mm;page-break-after:always;break-after:page}
+.page:last-child{page-break-after:auto;break-after:auto}
+.panel{position:absolute;top:0;width:99mm;height:216mm}
+.p1{left:3mm}.p2{left:102mm}.p3{left:201mm}
+.in{position:absolute;top:var(--top);bottom:var(--bot);display:flex;flex-direction:column}
+.in.spread{justify-content:space-between}
+.p1 .in{left:var(--outer);right:var(--fold)}
+.p2 .in{left:var(--fold);right:var(--fold)}
+.p3 .in{left:var(--fold);right:var(--outer)}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:500;color:var(--deep)}
+h2{font-size:17pt;line-height:1.14}
+h3{font-size:10pt;line-height:1.2;font-weight:600}
+.lab{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--blue)}
+.sec{display:flex;align-items:baseline;gap:2.4mm;padding-bottom:2.2mm;border-bottom:.25mm solid var(--ink)}
+.sec .n{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:15pt;color:var(--blue);line-height:1}
+.sec .lab{color:var(--ink)}
+.blue .sec .n{color:var(--orange);font-size:19pt}
+.blue .sec{padding-top:1.6mm}
+.body{font-size:8.6pt;line-height:1.45}
+.note{font-size:7.5pt;line-height:1.4}
+.mute{color:var(--mute)}
+.photo{display:block;width:100%;object-fit:cover}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;padding-top:var(--s2);border-top:.2mm solid var(--rule)}
+.foot img{width:21mm;height:auto;display:block;margin-left:-1mm}
+.foot.center{justify-content:center}
+.foot.center img{margin-left:0}
+.foot .lab{color:var(--mute);font-weight:500}
+.foot .fc{display:grid;row-gap:.5mm;margin-left:auto;padding-left:3.6mm;border-left:.35mm solid var(--orange);font-size:7.6pt;line-height:1.35;color:var(--ink)}
+.foot .fc span{display:grid;grid-template-columns:8.5mm auto;column-gap:1.2mm;align-items:baseline;white-space:nowrap}
+.foot .fc b{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--blue)}
+.nb{white-space:nowrap}
+
+/* flap */
+.years{display:flex;justify-content:space-between;font-family:'Playfair Display',serif;font-size:15pt;color:var(--blue);margin-top:1.6mm;line-height:1}
+.recog .t{font-family:'Playfair Display',serif;font-size:10pt;color:var(--deep);font-weight:500;margin-top:1.2mm}
+.medals{display:flex;margin-top:1.8mm;border-top:.2mm solid var(--rule);padding-top:2mm}
+.medals div{flex:1}
+.medals b{display:block;font-family:'Playfair Display',serif;font-weight:500;font-size:20pt;line-height:1;color:var(--blue)}
+.medals span{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute)}
+.lead{display:grid;grid-template-columns:1fr 1.15fr;gap:var(--s2);border-top:.2mm solid var(--rule);padding-top:2.4mm}
+.lead b{display:block;font-family:'Playfair Display',serif;font-weight:500;font-size:10.5pt;color:var(--deep)}
+.lead span{font-size:7.5pt;color:var(--mute);line-height:1.3;display:block}
+.path{border-top:.2mm solid var(--rule);padding-top:2.2mm}
+.trk{margin-top:2.2mm}
+.trk>.lab{display:block;color:var(--ink);margin-bottom:1.2mm}
+.cells{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:4.4mm}
+.cell{position:relative;padding-top:3.6mm}
+.cell:before{content:'';position:absolute;left:0;top:0;width:2.2mm;height:2.2mm;border-radius:50%;background:var(--orange)}
+.cell.none:before{display:none}
+.cell b{display:block;font-family:'Playfair Display',serif;font-weight:500;font-size:9.6pt;color:var(--deep)}
+.cell span{display:block;font-size:7.5pt;line-height:1.3;color:var(--mute);margin-top:.4mm}
+.linked .cell+.cell:before{}
+
+/* back (blue) */
+.back-bg{position:absolute;left:102mm;top:0;width:99mm;height:216mm;background:linear-gradient(165deg,rgba(31,147,215,.30) 0%,rgba(0,86,153,0) 42%,rgba(0,51,92,.42) 100%),url(img/bg_blue.png);background-size:auto,42mm}
+.cover-blue{position:absolute;left:201mm;top:0;width:102mm;height:216mm;background:linear-gradient(165deg,rgba(31,147,215,.30) 0%,rgba(0,86,153,0) 42%,rgba(0,51,92,.42) 100%),url(img/bg_blue.png);background-size:auto,42mm}
+.field-tint{position:absolute;left:201mm;top:0;width:102mm;height:216mm;background:url(img/bg_tint.png);background-size:42mm}
+.field-tint:before{content:'';position:absolute;left:0;top:0;bottom:0;border-left:.2mm solid rgba(0,86,153,.18)}
+.steps .step{display:flex;gap:3mm;padding:2.6mm 0;border-top:.2mm solid rgba(255,255,255,.35)}
+.steps .step:last-child{border-bottom:.2mm solid rgba(255,255,255,.35)}
+.stepn{font-family:'Playfair Display',serif;font-style:italic;font-size:22pt;color:var(--orange);line-height:1;width:9mm;flex:none}
+.step h3{color:#fff;font-size:10.5pt;margin-bottom:.6mm}
+.step p{color:#e8f1f9;font-size:8.6pt;line-height:1.4}
+.contact dl{display:grid;grid-template-columns:19mm 1fr;row-gap:1.8mm;margin-top:2.4mm}
+.contact dt{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#cfe3f3;padding-top:.8mm}
+.contact dd{font-size:9.4pt;color:#fff;line-height:1.3}
+
+/* cover */
+.cover .cphoto{position:absolute;left:8mm;top:33mm;width:82mm;height:100mm;object-fit:cover}
+.cover .ctext{position:absolute;left:var(--fold);right:var(--outer);top:141mm}
+.cover .kick{color:#fff;letter-spacing:.12em;font-size:7pt;font-weight:600;text-transform:uppercase;display:flex;align-items:center;gap:3mm;white-space:nowrap}
+.cover .kick:before{content:"";width:9mm;border-top:.5mm solid var(--orange)}
+.cover h1{font-size:37pt;line-height:1.03;color:#fff;font-weight:500;letter-spacing:-.01em;margin-top:4mm}
+.cover h1 em{font-style:italic;font-weight:400}
+.cover .sub{color:#e8f1f9;font-size:9.4pt;line-height:1.42;margin-top:3.4mm;width:76mm}
+.cover .cfoot{position:absolute;left:var(--fold);right:var(--outer);bottom:var(--bot);display:flex;justify-content:space-between;align-items:flex-end;border-top:.2mm solid rgba(255,255,255,.35);padding-top:2.4mm}
+.cover .cfoot span{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#e8f1f9}
+
+/* courses */
+.course{padding:2.6mm 0 2.4mm;border-top:.2mm solid var(--rule)}
+.course.first{border-top:none;padding-top:3.6mm}
+.course .hd{display:flex;gap:2.4mm;align-items:baseline}
+.course .no{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;color:var(--blue);font-size:11pt;flex:none;width:6mm}
+.spec{display:grid;grid-template-columns:12mm 22mm 1fr;column-gap:2mm;row-gap:1.2mm;margin:2.2mm 0 1.8mm 8.4mm}
+.spec .dur{grid-column:1 / -1;display:grid;grid-template-columns:14mm 1fr;column-gap:2mm;align-items:baseline}
+.spec .dur span{margin:0}
+.spec span{display:block;font-size:7pt;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--mute);margin-bottom:.2mm}
+.spec b{display:block;font-size:8.4pt;font-weight:500;line-height:1.28}
+.course .desc{margin-left:8.4mm;font-size:8.6pt;line-height:1.42}
+.course .entry{margin-left:8.4mm;font-size:7.6pt;line-height:1.4;color:var(--mute);margin-top:1.4mm}
+.course .entry b{font-weight:600;color:var(--ink);letter-spacing:.12em;text-transform:uppercase;font-size:7pt;margin-right:1mm}
+.course.aside{display:grid;grid-template-columns:1fr var(--aw,27mm);column-gap:3mm;grid-template-areas:"hd hd" "sp ph" "ds ph" "en en";align-items:start}
+.course.aside .hd{grid-area:hd}
+.course.aside .spec{grid-area:sp;grid-template-columns:18mm 1fr;margin-right:0}
+.course.aside .spec .dur{display:block;grid-column:auto}
+.course.aside .spec .dur span{margin-bottom:.2mm}
+.course.aside .desc{grid-area:ds;margin-left:8.4mm}
+.course.aside .entry{grid-area:en}
+.course.aside .ph{grid-area:ph;display:block;width:var(--aw,27mm);height:var(--ah,31mm);object-fit:cover;margin-top:2.2mm}
+.strip{display:grid;gap:2mm}
+.strip img{display:block;width:100%;object-fit:cover}
+/* photo frames: white print border, fine brand keyline outside, orange inner hairline; sky keyline on the blue panels */
+.ph,.strip img,.photo,.cover .cphoto{border:1.3mm solid #fff;box-shadow:0 0 0 .35mm var(--blue);outline:.4mm solid var(--orange);outline-offset:-2.5mm}
+.photo,.cover .cphoto{box-shadow:0 0 0 .35mm var(--sky)}
+.strip{gap:4mm}
+.block .lab{display:block;color:var(--ink);margin-bottom:1.4mm}
+
+/* fees */
+.sec2{display:flex;align-items:baseline;gap:2.4mm;padding-bottom:2.2mm;border-bottom:.25mm solid var(--ink)}
+.sec2 .n{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:15pt;color:var(--blue);line-height:1}
+.sec2 .lab{color:var(--ink)}
+table.fee{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums lining-nums;margin-top:1mm}
+.fee th{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute);text-align:right;padding:0 0 2mm}
+.fee th:first-child{text-align:left}
+.fee td{padding:2.2mm 0;border-top:.2mm solid var(--rule);font-size:9pt;text-align:right}
+.fee td:first-child{text-align:left}
+.fee tr.tot td{border-top:.5mm solid var(--ink);font-family:'Playfair Display',serif;font-size:13pt;font-weight:500;color:var(--blue);padding-top:2.8mm}
+.fee tr.tot td:first-child{font-size:8.4pt;font-family:'Source Sans 3';font-weight:600;color:var(--ink);letter-spacing:.14em;text-transform:uppercase}
+.fee tr:last-child td{border-bottom:.25mm solid var(--ink)}
+</style>
+<link rel="stylesheet" href="editor/editor.css"></head>
+<body>
+<section class="page" id="outside">
+  <div class="back-bg"></div>
+  <div class="cover-blue"></div>
+  <div class="panel p1"><div class="in spread">
+    <div class="sec"><span class="n">01</span><span class="lab">The School</span></div>
+    <h2>Cookery and hospitality, studied in central Auckland.</h2>
+    <p class="body">PBRS is an <span class="nb">NZQA-registered</span> school for cookery, food and beverage service, and hospitality management, established in 2000. Our campus has large buildings and wide, open training spaces in the Auckland&nbsp;CBD.</p>
+    <div class="recog">
+      <span class="lab">Recognition</span>
+      <div class="t">New Zealand Training Establishment of the Year</div>
+      <div class="years"><span>2014</span><span>2016</span><span>2017</span><span>2018</span></div>
+    </div>
+    <div class="recog">
+      <span class="lab">Auckland Regional Championships 2019</span>
+      <div class="medals">
+        <div><b>13</b><span>Gold</span></div>
+        <div><b>7</b><span>Silver</span></div>
+        <div><b>6</b><span>Bronze</span></div>
+      </div>
+      <p class="note mute" style="margin-top:1.4mm">26 students entered across 13 categories.</p>
+    </div>
+    <div class="path">
+      <span class="lab">Pathway &middot; Level 4 to Level 6</span>
+      <div class="trk"><span class="lab">Cookery</span>
+        <div class="cells"><div class="cell"><b>Level 4</b><span>Certificate in Cookery</span></div><div class="cell"><b>Level 5</b><span>Diploma in Food Preparation and Cookery Supervision</span></div><div class="cell none"></div></div></div>
+      <div class="trk"><span class="lab">Hospitality</span>
+        <div class="cells linked"><div class="cell"><b>Level 4</b><span>Certificate in Food and Beverage Service</span></div><div class="cell"><b>Level 5</b><span>Diploma in Hospitality Management</span></div><div class="cell"><b>Level 6</b><span>Diploma in Hospitality Management</span></div></div></div>
+    </div>
+    <div class="lead">
+      <div><b>Peter Do</b><span>CEO</span></div>
+      <div><b>Michael Corbett</b><span>Principal / Academic Director</span></div>
+    </div>
+  </div></div>
+
+  <div class="panel p2 blue"><div class="in spread">
+    <div class="sec" style="border-bottom-color:rgba(255,255,255,.55)"><span class="n">05</span><span class="lab" style="color:#fff">How to apply</span></div>
+    <img class="photo" src="img/back_079.jpg" style="height:50mm;object-position:50% 40%" alt="">
+    <h2 style="color:#fff;font-size:16pt">Three steps<br>to your offer.</h2>
+    <div class="steps">
+      <div class="step"><span class="stepn">1</span><div><h3>Apply online</h3><p>Send your passport and academic transcripts.</p></div></div>
+      <div class="step"><span class="stepn">2</span><div><h3>Add supporting documents</h3><p>An English test, your CV and work experience are optional.</p></div></div>
+      <div class="step"><span class="stepn">3</span><div><h3>Receive your offer</h3><p>Admissions review your application and make an offer.</p></div></div>
+    </div>
+    <div class="contact">
+      <span class="lab" style="color:#fff">Contact admissions</span>
+      <dl>
+        <dt>Telephone</dt><dd>+64 (09) 367 1010</dd>
+        <dt>Email</dt><dd>info@pbrs.ac.nz</dd>
+        <dt>Address</dt><dd>150 Hobson Street<br>Auckland CBD, New Zealand</dd>
+        <dt>Web</dt><dd>www.pbrs.ac.nz</dd>
+      </dl>
+    </div>
+    <div><img src="img/logo-light.png" style="width:34mm;display:block;margin-left:-1.8mm" alt="PBRS"></div>
+  </div></div>
+
+  <div class="panel p3 cover">
+    <div class="in" style="bottom:auto">
+      <img src="img/logo-light.png" style="width:34mm;display:block;margin-left:-1.8mm" alt="PBRS">
+    </div>
+    <img class="cphoto" src="img/cover_078.jpg" alt="">
+    <div class="ctext">
+      <div class="kick">Professional Business and Restaurant School</div>
+      <h1>The craft<br>of <em>hospitality.</em></h1>
+      <p class="sub">Cookery, food and beverage service, and hospitality management qualifications, taught in the heart of Auckland.</p>
+    </div>
+    <div class="cfoot"><span>Auckland CBD, New Zealand</span><span>NZQA-registered</span></div>
+  </div>
+
+</section>
+<section class="page" id="inside">
+  <div class="field-tint"></div>
+  <div class="panel p1"><div class="in spread">
+    <div class="sec"><span class="n">02</span><span class="lab">Courses &middot; Cookery</span></div>
+    <article class="course aside first" style="--aw:31mm;--ah:29mm">
+      <div class="hd"><span class="no">2.1</span><h3>New Zealand Certificate in Cookery</h3></div>
+      <div class="spec"><div><span>Level</span><b>4</b></div><div><span>Qualification</span><b>Certificate</b></div><div class="cr"><span>Credits</span><b>120</b></div><div class="dur"><span>Duration</span><b>1&nbsp;year (36&nbsp;weeks, four 9&#8209;week&nbsp;terms)</b></div></div>
+      <p class="desc">Build the skills to work as a chef in intermediate positions producing complex dishes in a commercial kitchen.</p>
+      <p class="entry"><b>Entry</b>Age 17 or older. Recognition of prior learning may be considered with proof of industry experience. English test or equivalent accepted.</p>
+      <img class="ph" src="img/c1_062.jpg" style="object-position:50% 50%" alt="">
+    </article>
+    <div class="strip" style="grid-template-columns:1fr 1fr"><img src="img/p_018.jpg" style="height:30mm" alt=""><img src="img/p_020.jpg" style="height:30mm" alt=""></div>
+    <article class="course aside" style="--aw:28mm;--ah:31mm">
+      <div class="hd"><span class="no">2.2</span><h3>International Diploma in Food Preparation and Cookery Supervision (Advanced)</h3></div>
+      <div class="spec"><div><span>Level</span><b>5</b></div><div><span>Qualification</span><b>Diploma</b></div><div class="cr"><span>Credits</span><b>On request</b></div><div class="dur"><span>Duration</span><b>2 years</b></div></div>
+      <p class="desc">Advance into supervising food production, menu planning and costing, and event catering.</p>
+      <p class="entry"><b>Entry</b>Age 17 or older. Recognition of prior learning may be considered with proof of industry experience. English test or equivalent accepted.</p>
+      <img class="ph" src="img/a_090.jpg" style="object-position:50% 50%" alt="">
+    </article>
+    <div class="foot center"><img src="img/logo.png" alt="PBRS"></div>
+  </div></div>
+
+  <div class="panel p2"><div class="in spread">
+    <div class="sec"><span class="n">03</span><span class="lab">Courses &middot; Service and management</span></div>
+    <article class="course aside first" style="--aw:26mm;--ah:30mm">
+      <div class="hd"><span class="no">2.3</span><h3>New Zealand Certificate in Food and Beverage Service (Restaurant Services)</h3></div>
+      <div class="spec"><div><span>Level</span><b>4</b></div><div><span>Qualification</span><b>Certificate</b></div><div class="cr"><span>Credits</span><b>On request</b></div><div class="dur"><span>Duration</span><b>20&nbsp;weeks, including a 2&#8209;week term&nbsp;break</b></div></div>
+      <p class="desc">Prepare for restaurant service roles with advanced food and beverage service skills.</p>
+      <p class="entry"><b>Entry</b>Age 18 or older (alcohol regulations). Recognition of prior learning may be considered with proof of industry experience. English test or equivalent accepted.</p>
+      <img class="ph" src="img/a_087.jpg" style="object-position:50% 50%" alt="">
+    </article>
+    <article class="course">
+      <div class="hd"><span class="no">2.4</span><h3>New Zealand Diploma in Hospitality Management</h3></div>
+      <div class="spec"><div><span>Level</span><b>5</b></div><div><span>Qualification</span><b>Diploma</b></div><div class="cr"><span>Credits</span><b>On request</b></div><div class="dur"><span>Duration</span><b>1 year</b></div></div>
+      <p class="desc">A one-year route into supervisory and business management, through to starting your own business.</p>
+      <p class="entry"><b>Entry</b>Age 18 or older, with Year 12 or NCEA Level 3 (or equivalent), a Level 4 hospitality qualification, or two years of relevant work experience. English test or equivalent accepted.</p>
+      
+    </article>
+    <div class="block">
+      <span class="lab">Student support</span>
+      <p class="body">Academic guidance, a dedicated Pastoral Care Team, learning support, careers advice and help finding study-related work.</p>
+    </div>
+    <div class="block">
+      <span class="lab">Facilities</span>
+      <p class="body">Modern classrooms and computer laboratories, professional commercial training kitchens, a training restaurant, a library and a student lounge.</p>
+    </div>
+    <div class="foot center"><img src="img/logo.png" alt="PBRS"></div>
+  </div></div>
+
+  <div class="panel p3"><div class="in spread">
+    <div class="sec"><span class="n">04</span><span class="lab">Courses &middot; Management</span></div>
+    <article class="course first">
+      <div class="hd"><span class="no">2.5</span><h3>New Zealand Diploma in Hospitality Management</h3></div>
+      <div class="spec"><div><span>Level</span><b>6</b></div><div><span>Qualification</span><b>Diploma</b></div><div class="cr"><span>Credits</span><b>120</b></div><div class="dur"><span>Duration</span><b>48&nbsp;weeks including term breaks (four 9&#8209;week&nbsp;terms)</b></div></div>
+      <p class="desc">Develop the strategic, people and financial management skills for senior hospitality roles.</p>
+      <p class="entry"><b>Entry</b>Age 18 or older. Level 5 Hospitality Management, or equivalent with two years of hospitality work experience. Enrolment form and, where needed, an interview. English test or equivalent accepted.</p>
+      
+    </article>
+    <div class="sec2"><span class="n">05</span><span class="lab">Fee schedule</span></div>
+    <div style="margin-top:1mm">
+      <h2>Tuition and fees.</h2>
+      <p class="note mute" style="margin:1.4mm 0 2mm">All amounts in New Zealand dollars (NZD).</p>
+      <table class="fee">
+        <thead><tr><th>Item</th><th>1st year</th><th>2nd year</th></tr></thead>
+        <tbody>
+          <tr><td>Enrolment fee</td><td>500</td><td>&ndash;</td></tr>
+          <tr><td>Tuition</td><td>19,500</td><td>15,000</td></tr>
+          <tr><td>Materials</td><td>3,000</td><td>2,000</td></tr>
+          <tr><td>Insurance</td><td>849</td><td>849</td></tr>
+          <tr class="tot"><td>Total</td><td>23,849</td><td>17,849</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p class="body">Hospitality Management Level 5 and Level 6: fees on request, please contact admissions.</p>
+      <p class="note mute" style="margin-top:1.6mm">Fees as advised by PBRS; please confirm with admissions before enrolling.</p>
+    </div>
+    <div class="foot"><img src="img/logo.png" alt="PBRS"><div class="fc"><span><b>Tel</b>+64 (09) 367 1010</span><span><b>Email</b>info@pbrs.ac.nz</span><span><b>Web</b>www.pbrs.ac.nz</span></div></div>
+  </div></div>
+
+</section>
+<script>window.ED_CONFIG={"id": "a", "title": "PBRS Course Prospectus (Brochure A)", "feedbackTo": "zeroinfinityinfotech@gmail.com", "library": "library/", "pdf": "downloads/PBRS-Course-Prospectus.pdf", "pdfMarks": "downloads/PBRS-Course-Prospectus-print-cropmarks.pdf"};</script><script src="editor/library.js"></script><script src="editor/editor.js"></script></body>
+</html>
