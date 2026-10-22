@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PBRS Leaflet</title><style>
+@font-face{font-family:'Playfair Display';font-weight:400;font-style:normal;src:url(fonts/pf-400.ttf)}
+@font-face{font-family:'Playfair Display';font-weight:500;font-style:normal;src:url(fonts/pf-500.ttf)}
+@font-face{font-family:'Playfair Display';font-weight:600;font-style:normal;src:url(fonts/pf-600.ttf)}
+@font-face{font-family:'Playfair Display';font-weight:400;font-style:italic;src:url(fonts/pf-i400.ttf)}
+@font-face{font-family:'Playfair Display';font-weight:500;font-style:italic;src:url(fonts/pf-i500.ttf)}
+@font-face{font-family:'Source Sans 3';font-weight:400;font-style:normal;src:url(fonts/ss-400.ttf)}
+@font-face{font-family:'Source Sans 3';font-weight:500;font-style:normal;src:url(fonts/ss-500.ttf)}
+@font-face{font-family:'Source Sans 3';font-weight:600;font-style:normal;src:url(fonts/ss-600.ttf)}
+:root{--blue:#005699;--deep:#00335c;--sky:#1f93d7;--orange:#fc981e;--ink:#041b33;--paper:#f6f2e9;--rule:#c9d3dd;--mute:#44596e;--lsky:#a9d8f5}
+@page{size:154mm 216mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font-family:'Source Sans 3',sans-serif;color:var(--ink);font-size:8.8pt;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-variant-numeric:lining-nums tabular-nums}
+.page{position:relative;width:154mm;height:216mm;overflow:hidden;page-break-after:always;break-after:page}
+.page:last-child{page-break-after:auto;break-after:auto}
+.abs{position:absolute}
+.lbl{font-size:7pt;font-weight:600;letter-spacing:.2em;text-transform:uppercase;line-height:1.3}
+/* FRONT: full-bleed hero fading into navy */
+.front{background:var(--deep) url(img/bg_navy.png);background-size:42mm;color:#fff}
+.hero{left:0;top:0;width:154mm;height:102.7mm;display:block}
+.fade{left:0;top:0;width:154mm;height:103mm;background:linear-gradient(180deg,rgba(0,51,92,0) 0,rgba(0,51,92,0) 90mm,rgba(0,51,92,.6) 98mm,#00335c 103mm)}
+.front .logo{left:15mm;top:13mm;height:12mm}
+.kick{left:15mm;top:116.5mm;display:flex;align-items:center;gap:3.4mm;color:#fff}
+.kick:before{content:"";width:11mm;border-top:.5mm solid var(--orange)}
+h1{position:absolute;left:15mm;top:123mm;font-family:'Playfair Display',serif;font-weight:400;font-size:43pt;line-height:1.03;letter-spacing:-.008em;color:#fff}
+h1 em{font-style:italic}
+.sub{left:15mm;width:98mm;top:164mm;font-size:10pt;line-height:1.5;color:#e4eef7}
+.ffoot{left:15mm;width:124mm;top:190.6mm;border-top:.3mm solid rgba(255,255,255,.35);padding-top:2.8mm;display:flex;justify-content:space-between;color:#fff}
+/* BACK */
+.back{background:var(--paper) url(img/bg_paper.png);background-size:42mm}
+.back .logo{left:15mm;top:11.5mm;height:9.5mm}
+.back .tag{right:15mm;top:14.8mm;color:var(--blue);text-align:right}
+h2{position:absolute;left:15mm;top:26mm;font-family:'Playfair Display',serif;font-weight:400;font-size:17pt;line-height:1.15;color:var(--ink)}
+h2 em{font-style:italic;color:var(--blue)}
+.ph{display:block}
+.grp{left:15mm;width:57mm}
+.grp .lbl{color:var(--blue);margin-bottom:2.2mm;display:flex;align-items:center;gap:2.6mm}
+.grp .lbl:after{content:"";flex:1;border-top:.25mm solid var(--rule)}
+.q{display:grid;grid-template-columns:9.5mm 1fr;column-gap:0;margin-bottom:2.6mm;align-items:start}
+.g1 .q{margin-bottom:4.5mm}
+.g2 .q{margin-bottom:5mm}
+.q .n{font-family:'Playfair Display',serif;font-style:italic;font-size:21pt;line-height:.95;color:var(--blue)}
+.q .t{font-family:'Playfair Display',serif;font-size:10pt;line-height:1.24;color:var(--ink)}
+.q .d{font-size:8pt;font-weight:500;color:var(--mute);margin-top:.7mm;letter-spacing:.01em;line-height:1.3}
+.recog{left:77mm;width:62mm;top:127.5mm;border-top:.3mm solid var(--ink);padding-top:3mm}
+.recog .lbl{color:var(--blue);margin-bottom:1.4mm}
+.recog .h{font-family:'Playfair Display',serif;font-size:10pt;line-height:1.25;text-wrap:balance}
+.yrs{display:flex;justify-content:space-between;margin-top:2mm;font-family:'Playfair Display',serif;font-size:14.5pt;color:var(--blue);line-height:1}
+.lead{font-size:7.5pt;color:var(--mute);line-height:1.4;margin-top:2.6mm}
+.lead b{font-weight:600;color:var(--ink)}
+.band{left:0;top:168mm;width:154mm;height:48mm;background:var(--deep) url(img/bg_navy.png);background-size:42mm;border-top:.6mm solid var(--orange)}
+.ap{left:15mm;top:175.4mm;width:60mm;color:#fff}
+.ap .lbl{color:var(--lsky);margin-bottom:1.6mm}
+.ap p{font-size:8.8pt;line-height:1.4;margin-bottom:1.1mm;color:#fff}
+.ap .web{font-family:'Playfair Display',serif;font-size:12pt;margin-top:2mm;color:#fff}
+.ct{left:84mm;top:175.6mm;width:55mm;color:#fff}
+.ct dl{display:grid;row-gap:1.7mm}
+.ct dt{font-size:7pt;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lsky);line-height:1.2}
+.ct dd{font-size:9.2pt;line-height:1.28;color:#fff}
+</style><link rel="stylesheet" href="../editor/editor.css"></head><body>
+<div class="page front">
+ <img class="abs hero" src="img/hero_g47.jpg" alt="PBRS student chef plating a salad">
+ <div class="abs fade"></div>
+ <img class="abs logo" src="img/logo.png" alt="PBRS">
+ <div class="abs kick lbl">Professional Business and Restaurant School</div>
+ <h1>The craft<br>of <em>hospitality.</em></h1>
+ <p class="abs sub">Cookery, food and beverage service, and hospitality management qualifications, taught in the heart of Auckland.</p>
+ <div class="abs ffoot lbl"><span>Auckland CBD, New Zealand</span><span>NZQA-registered</span></div>
+</div>
+<div class="page back">
+ <img class="abs logo" src="img/logo.png" alt="PBRS">
+ <div class="abs tag lbl">NZQA-registered</div>
+ <h2>Five qualifications, <em>Level 4 to Level 6.</em></h2>
+ <div class="abs grp g1" style="top:38mm"><div class="lbl">Cookery</div>
+  <div class="q"><div class="n">4</div><div><div class="t">New Zealand Certificate in Cookery</div><div class="d">Level 4 &nbsp;·&nbsp; 1 year · 36 weeks, 120 credits</div></div></div>
+  <div class="q"><div class="n">5</div><div><div class="t">International Diploma in Food Preparation and Cookery Supervision (Advanced)</div><div class="d">Level 5 &nbsp;·&nbsp; 2 years</div></div></div>
+ </div>
+ <img class="abs ph" src="img/chef_g06.jpg" alt="Smiling PBRS chef in a training kitchen" style="left:77mm;top:38mm;width:62mm;height:41.3mm">
+ <div class="abs grp g2" style="top:89mm"><div class="lbl">Service and management</div>
+  <div class="q"><div class="n">4</div><div><div class="t">New Zealand Certificate in Food and Beverage Service (Restaurant Services)</div><div class="d">Level 4 &nbsp;·&nbsp; 20 weeks, incl. 2-week term break</div></div></div>
+  <div class="q"><div class="n">5</div><div><div class="t">New Zealand Diploma in Hospitality Management</div><div class="d">Level 5 &nbsp;·&nbsp; 1 year</div></div></div>
+  <div class="q"><div class="n">6</div><div><div class="t">New Zealand Diploma in Hospitality Management</div><div class="d">Level 6 &nbsp;·&nbsp; 48 weeks, 120 credits</div></div></div>
+ </div>
+ <img class="abs ph" src="img/bar_g04.jpg" alt="PBRS hospitality students at the bar" style="left:77mm;top:89mm;width:62mm;height:32.9mm">
+ <div class="abs recog"><div class="lbl">Recognition</div><div class="h">New Zealand Training Establishment of the Year</div>
+  <div class="yrs"><span>2014</span><span>2016</span><span>2017</span><span>2018</span></div>
+  <div class="lead"><b>Peter Do</b>, CEO<br><b>Michael Corbett</b>, Principal / Academic Director</div></div>
+ <div class="abs band"></div>
+ <div class="abs ap"><div class="lbl">How to apply</div>
+  <p>Apply online, then send your passport and academic transcripts.</p>
+  <p>An English test or equivalent is accepted.</p><div class="web">www.pbrs.ac.nz</div></div>
+ <div class="abs ct"><dl><div><dt>Telephone</dt><dd>+64 (09) 367 1010</dd></div><div><dt>Email</dt><dd>info@pbrs.ac.nz</dd></div><div><dt>Address</dt><dd>150 Hobson Street<br>Auckland CBD, New Zealand</dd></div></dl></div>
+</div><script>window.ED_CONFIG={"id": "leaflet", "title": "PBRS A5 Leaflet", "brand": "PBRS review", "feedbackTo": "zeroinfinityinfotech@gmail.com", "endpoint": "https://ntfy.sh/pbrs-brochure-f0a8e11ac83864a5132b", "pdf": "../downloads/PBRS-Leaflet.pdf", "pdfName": "PBRS-Leaflet.pdf", "tabs": [{"label": "Course Prospectus", "href": "../", "on": false}, {"label": "A5 Leaflet", "href": "./", "on": true}], "widthMm": 154, "maxZoom": 1.7, "captions": ["Front", "Back (inside)"], "pageNames": ["Front", "Back"]};</script><script src="../editor/editor.js"></script></body></html>

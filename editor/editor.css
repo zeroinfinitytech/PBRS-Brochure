@@ -87,3 +87,10 @@ body.ed-rvon #ed-stage{padding-bottom:90px}
 
 html,body{overflow-x:hidden}
 #ed-bar{flex-wrap:nowrap}
+
+/* document tabs in the bar */
+#ed-bar .tab{color:#fff;text-decoration:none;font:600 13px/1 system-ui,sans-serif;padding:9px 12px;border-radius:7px;border:1px solid transparent;white-space:nowrap;opacity:.85}
+#ed-bar .tab:hover{background:rgba(255,255,255,.12);opacity:1}
+#ed-bar .tab.on{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);opacity:1}
+#ed-bar .br{margin-right:8px}
+@media (max-width:640px){#ed-bar .tab{padding:8px 9px;font-size:12px}}

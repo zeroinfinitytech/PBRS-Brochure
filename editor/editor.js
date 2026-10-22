@@ -18,7 +18,7 @@ var BLOCK = /^(DIV|P|H1|H2|H3|H4|UL|OL|LI|TABLE|TR|TD|TH|SECTION|IMG|HEADER|FOOT
 function prepare() {
   var pages = $$('.page'); var stage = document.createElement('div'); stage.id = 'ed-stage';
   pages[0].parentNode.insertBefore(stage, pages[0]);
-  pages.forEach(function (p, i) { var c = document.createElement('div'); c.className = 'ed-cap'; c.textContent = i === 0 ? 'Outside: flap, back, cover' : 'Inside'; stage.appendChild(c); stage.appendChild(p); });
+  pages.forEach(function (p, i) { var c = document.createElement('div'); c.className = 'ed-cap'; c.textContent = (CFG.captions && CFG.captions[i]) || (i === 0 ? 'Outside: flap, back, cover' : 'Inside'); stage.appendChild(c); stage.appendChild(p); });
   var n = 0;
   $$('.page *').forEach(function (el) {
     if (el.tagName === 'IMG') { if (/logo/i.test(el.getAttribute('src') || '')) return; el.setAttribute('data-ed-img', ++n); orig.images[n] = { src: el.getAttribute('src'), style: el.getAttribute('style') || '' }; return; }
@@ -28,7 +28,7 @@ function prepare() {
   });
   fit();
 }
-function fit() { var w = 303 * 3.7795; var vw = Math.min(window.innerWidth, document.documentElement.clientWidth || window.innerWidth); var z = Math.min(1.45, (vw - 20) / w); $$('#ed-stage .page').forEach(function (p) { p.style.zoom = z; }); }
+function fit() { var w = (CFG.widthMm || 303) * 3.7795; var vw = Math.min(window.innerWidth, document.documentElement.clientWidth || window.innerWidth); var z = Math.min(CFG.maxZoom || 1.45, (vw - 20) / w); $$('#ed-stage .page').forEach(function (p) { p.style.zoom = z; }); }
 
 /* ---- apply stored changes ---- */
 function applyAll() {
@@ -85,8 +85,8 @@ function pickImage(el) {
 function labelFor(el) {
   var p = el.closest('.page'), pi = $$('.page').indexOf(p), pn = el.closest('.panel'), pcls = pn ? (pn.className.match(/p[123]/) || [''])[0] : '';
   var name = { 0: { p1: 'Flap', p2: 'Back', p3: 'Cover' }, 1: { p1: 'Inside left', p2: 'Inside middle', p3: 'Inside right' } }[pi] || {};
-  var t = el.hasAttribute('data-ed-img') ? 'Photo' : (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 50);
-  return (name[pcls] || 'Page') + ' / ' + t;
+  var t = el.hasAttribute('data-ed-img') ? 'Photo' : (el.innerText || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 50);
+  return ((CFG.pageNames && CFG.pageNames[pi]) || name[pcls] || 'Page') + ' / ' + t;
 }
 function addNote(el, ev) {
   var id = el.getAttribute('data-ed-text') || el.getAttribute('data-ed-img'), kind = el.hasAttribute('data-ed-img') ? 'img' : 'text';
@@ -106,7 +106,7 @@ function pins() {
   });
 }
 function showNotes() {
-  var d = pop('<h4>Review notes (' + state.notes.length + ')</h4><div class="bd">' + (state.notes.length ? state.notes.map(function (n, i) { return '<div class="ed-note"><i>' + (i + 1) + '</i><div><b>' + esc(n.label) + '</b><div>' + esc(n.text) + '</div><small>' + n.at + ' <a href="#" data-del="' + i + '">remove</a></small></div></div>'; }).join('') : '<p style="color:#5a6c7e">No notes yet. Tap any text or photo on the page to add one.</p>') + '</div><div class="ft"><button id="edx2">Close</button><button class="pri" id="edsend">Send feedback to Zero Infinity</button></div>', null, '520px');
+  var d = pop('<h4>Review notes (' + state.notes.length + ')</h4><div class="bd">' + (state.notes.length ? state.notes.map(function (n, i) { return '<div class="ed-note"><i>' + (i + 1) + '</i><div><b>' + esc(n.label) + '</b><div>' + esc(n.text) + '</div><small>' + n.at + ' <a href="#" data-del="' + i + '">remove</a></small></div></div>'; }).join('') : '<p style="color:#5a6c7e">No notes yet. Tap any text or photo on the page to add one.</p>') + '</div><div class="ft"><button id="edx2">Close</button><button class="pri" id="edsend">Send feedback</button></div>', null, '520px');
   $('#edx2', d).addEventListener('click', closePop); $('#edsend', d).addEventListener('click', function () { closePop(); sendReview(); });
   $$('[data-del]', d).forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); state.notes.splice(+a.getAttribute('data-del'), 1); save(); pins(); showNotes(); }); });
 }
@@ -118,26 +118,41 @@ function changesSummary() {
 }
 function txt(h) { var d = document.createElement('div'); d.innerHTML = h; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
 function sendReview() {
-  var NL = String.fromCharCode(10);
-  var lines = ['Brochure: ' + (CFG.title || 'PBRS brochure'), '', 'Review notes:'];
-  if (!state.notes.length) lines.push('(no notes added)');
-  state.notes.forEach(function (n, i) { lines.push((i + 1) + '. [' + n.label + '] ' + n.text); });
-  var body = lines.join(NL); if (body.length > 1700) body = body.slice(0, 1650) + NL + '...(shortened)';
-  var url = 'mailto:' + (CFG.feedbackTo || 'zeroinfinityinfotech@gmail.com') + '?subject=' + encodeURIComponent('PBRS brochure feedback: ' + (CFG.title || '')) + '&body=' + encodeURIComponent(body);
-  window.location.href = url; toast('Opening your email to send this to the Zero Infinity team');
+  var d = pop('<h4>Send your feedback to the Zero Infinity team</h4><div class="bd"><div style="color:#5a6c7e;font-size:12.5px;margin-bottom:6px">' + state.notes.length + ' note' + (state.notes.length === 1 ? '' : 's') + ' will be included. Name and email are optional; add your email if you would like a reply.</div>' +
+    '<label>Your name (optional)</label><input type="text" id="edfn" autocomplete="name"><label>Your email (optional)</label><input type="text" id="edfe" autocomplete="email" inputmode="email">' +
+    '<label>Anything else you would like to say</label><textarea id="edfm" placeholder="Overall comments, changes you would like, questions"></textarea><div id="edfs" style="margin-top:8px;font-size:12.5px;color:#a3262a"></div></div>' +
+    '<div class="ft"><button id="edfc">Cancel</button><button class="pri" id="edfg">Send</button></div>', null, '460px');
+  $('#edfc', d).addEventListener('click', closePop);
+  $('#edfg', d).addEventListener('click', function () {
+    var NL = String.fromCharCode(10), notes = state.notes.map(function (n, i) { return (i + 1) + '. [' + n.label + '] ' + n.text; }).join(NL);
+    var msg = $('#edfm', d).value.trim(), email = $('#edfe', d).value.trim();
+    if (!notes && !msg) { $('#edfs', d).textContent = 'Add a note on the page or write a comment first.'; return; }
+    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $('#edfs', d).textContent = 'That email address does not look right.'; return; }
+    var btn = $('#edfg', d); btn.disabled = true; btn.textContent = 'Sending...';
+    var payload = { brochure: CFG.title || '', name: $('#edfn', d).value.trim(), email: email, comment: msg, notes: notes || '(no notes)', page: location.href.split('#')[0], sent_at: new Date().toISOString() };
+    fetch(CFG.endpoint, { method: 'POST', body: JSON.stringify(payload) })
+      .then(function (r) { if (!r.ok) throw new Error('failed'); return r.json().catch(function () { return {}; }); })
+      .then(function () { closePop(); state.notes = []; save(); pins(); toast('Thank you. Your feedback was sent to the Zero Infinity team.'); })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = 'Send';
+        $('#edfs', d).innerHTML = 'Could not send right now. <a href="#" id="edfm2">Send by email instead</a>';
+        $('#edfm2', d).addEventListener('click', function (e) { e.preventDefault(); window.location.href = 'mailto:' + (CFG.feedbackTo || 'zeroinfinityinfotech@gmail.com') + '?subject=' + encodeURIComponent('PBRS brochure feedback: ' + (CFG.title || '')) + '&body=' + encodeURIComponent((msg ? msg + NL + NL : '') + notes); });
+      });
+  });
 }
 
 /* ---- toolbar: Review, Download PDF, Print and nothing more ---- */
 function bar() {
   var b = document.createElement('div'); b.id = 'ed-bar';
-  b.innerHTML = '<b class="br">PBRS Course Prospectus</b><span class="sp"></span><button id="ed-m-rev">Review</button><button id="ed-dl" class="go">Download PDF</button><button id="ed-print">Print</button>';
+  var tabs = (CFG.tabs || []).map(function (t) { return '<a class="tab' + (t.on ? ' on' : '') + '" href="' + t.href + '">' + t.label + '</a>'; }).join('');
+  b.innerHTML = '<b class="br">' + (CFG.brand || 'PBRS review') + '</b>' + tabs + '<span class="sp"></span><button id="ed-m-rev">Review</button><button id="ed-dl" class="go">Download PDF</button><button id="ed-print">Print</button>';
   document.body.appendChild(b); document.body.classList.add('ed-on');
   var t = document.createElement('div'); t.id = 'ed-toast'; document.body.appendChild(t);
   var rv = document.createElement('div'); rv.id = 'ed-rv';
-  rv.innerHTML = '<span>Tap any text or photo to leave a note.</span><button id="ed-notes">Notes (<i id="ed-nc">0</i>)</button><button class="go" id="ed-send">Send feedback to Zero Infinity</button>';
+  rv.innerHTML = '<span>Tap any text or photo to leave a note.</span><button id="ed-notes">Notes (<i id="ed-nc">0</i>)</button><button class="go" id="ed-send">Send feedback</button>';
   document.body.appendChild(rv);
   $('#ed-m-rev').onclick = function () { setMode(mode === 'review' ? 'view' : 'review'); };
-  $('#ed-dl').onclick = function () { var a = document.createElement('a'); a.href = CFG.pdf; a.download = 'PBRS-Course-Prospectus.pdf'; document.body.appendChild(a); a.click(); a.remove(); toast('Downloading the PDF'); };
+  $('#ed-dl').onclick = function () { var a = document.createElement('a'); a.href = CFG.pdf; a.download = CFG.pdfName || 'PBRS.pdf'; document.body.appendChild(a); a.click(); a.remove(); toast('Downloading the PDF'); };
   $('#ed-print').onclick = function () { closePop(); window.print(); };
   $('#ed-notes').onclick = showNotes; $('#ed-send').onclick = sendReview;
 }
