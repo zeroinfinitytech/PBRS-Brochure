@@ -21,7 +21,7 @@ function prepare() {
   pages.forEach(function (p, i) { var c = document.createElement('div'); c.className = 'ed-cap'; c.textContent = (CFG.captions && CFG.captions[i]) || (i === 0 ? 'Outside: flap, back, cover' : 'Inside'); stage.appendChild(c); stage.appendChild(p); });
   var n = 0;
   $$('.page *').forEach(function (el) {
-    if (el.tagName === 'IMG') { if (/logo/i.test(el.getAttribute('src') || '')) return; el.setAttribute('data-ed-img', ++n); orig.images[n] = { src: el.getAttribute('src'), style: el.getAttribute('style') || '' }; return; }
+    if (el.tagName === 'IMG') { el.setAttribute('data-ed-img', ++n); orig.images[n] = { src: el.getAttribute('src'), style: el.getAttribute('style') || '' }; return; }
     var hasText = false, blockKid = false;
     for (var k = el.firstChild; k; k = k.nextSibling) { if (k.nodeType === 3 && k.textContent.trim()) hasText = true; if (k.nodeType === 1 && BLOCK.test(k.tagName)) blockKid = true; }
     if (hasText && !blockKid) { el.setAttribute('data-ed-text', ++n); orig.texts[n] = el.innerHTML; }
@@ -85,7 +85,7 @@ function pickImage(el) {
 function labelFor(el) {
   var p = el.closest('.page'), pi = $$('.page').indexOf(p), pn = el.closest('.panel'), pcls = pn ? (pn.className.match(/p[123]/) || [''])[0] : '';
   var name = { 0: { p1: 'Flap', p2: 'Back', p3: 'Cover' }, 1: { p1: 'Inside left', p2: 'Inside middle', p3: 'Inside right' } }[pi] || {};
-  var t = el.hasAttribute('data-ed-img') ? 'Photo' : (el.innerText || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 50);
+  var t = el.hasAttribute('data-ed-img') ? (/logo/i.test(el.getAttribute('src') || '') ? 'Logo' : 'Photo') : (el.innerText || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 50);
   return ((CFG.pageNames && CFG.pageNames[pi]) || name[pcls] || 'Page') + ' / ' + t;
 }
 function addNote(el, ev) {
@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('click', function (e) {
     if (e.target.closest('#ed-bar,.ed-pop,.ed-pin,#ed-help')) return;
     var img = e.target.closest('[data-ed-img]'), tx = e.target.closest('[data-ed-text]');
+    if (mode === 'review' && !img && !tx) { var hits = document.elementsFromPoint(e.clientX, e.clientY); for (var h = 0; h < hits.length; h++) { var m = hits[h].closest && hits[h].closest('[data-ed-img],[data-ed-text]'); if (m) { if (m.hasAttribute('data-ed-img')) img = m; else tx = m; break; } } }
     
     if (mode === 'review' && (img || tx)) { e.preventDefault(); addNote(img || tx, e); return; }
     if (!img) closePop();
