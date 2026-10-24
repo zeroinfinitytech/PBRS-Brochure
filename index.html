@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>PBRS - Course Prospectus (Brochure A)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>PBRS Brochure: review</title>
 <style>
 @font-face{font-family:'Playfair Display';font-weight:400;font-style:normal;src:url(fonts/pf-400.ttf)}
 @font-face{font-family:'Playfair Display';font-weight:500;font-style:normal;src:url(fonts/pf-500.ttf)}
@@ -143,6 +143,42 @@ table.fee{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums 
 .fee tr.tot td{border-top:.5mm solid var(--ink);font-family:'Playfair Display',serif;font-size:13pt;font-weight:500;color:var(--blue);padding-top:2.8mm}
 .fee tr.tot td:first-child{font-size:8.4pt;font-family:'Source Sans 3';font-weight:600;color:var(--ink);letter-spacing:.14em;text-transform:uppercase}
 .fee tr:last-child td{border-bottom:.25mm solid var(--ink)}
+
+/* ---- V2 awards edition ---- */
+.tl{border-top:.2mm solid var(--rule)}
+.tl .r{display:grid;grid-template-columns:12.5mm 1fr;column-gap:2mm;padding:2.1mm 0;border-bottom:.2mm solid var(--rule);align-items:baseline}
+.tl .y{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:12.5pt;color:var(--blue);line-height:1.1}
+.tl .t{font-size:8.2pt;line-height:1.36;color:var(--ink)}
+.tl .t b{font-weight:600}
+.tl .t i{font-style:normal;color:var(--mute)}
+.fact{display:flex;gap:2.6mm;align-items:baseline;font-size:7pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute)}
+.fact span+span:before{content:"";display:inline-block;width:1.3mm;height:1.3mm;border-radius:50%;background:var(--orange);margin-right:2.6mm;vertical-align:.3mm}
+.big4{display:grid;grid-template-columns:repeat(4,1fr);margin-top:2.4mm;border-top:.2mm solid var(--rule);padding-top:2.6mm}
+.big4 b{font-family:'Playfair Display',serif;font-weight:500;font-size:21pt;line-height:1;color:var(--blue);display:block}
+.hon{padding:2.4mm 0;border-top:.2mm solid var(--rule)}
+.hon .lab{display:block;margin-bottom:.8mm}
+.hon .h{font-family:'Playfair Display',serif;font-weight:500;font-size:10.4pt;line-height:1.22;color:var(--deep)}
+.hon .s{font-size:7.8pt;line-height:1.38;color:var(--mute);margin-top:.7mm}
+.res{padding:2.8mm 0 2.6mm;border-top:.2mm solid var(--rule)}
+.res.first{border-top:none;padding-top:3.6mm}
+.res .lab{display:block;margin-bottom:.9mm}
+.res .h{font-family:'Playfair Display',serif;font-weight:500;font-size:10.8pt;line-height:1.2;color:var(--deep)}
+.res .medals{margin-top:2mm;border-top:none;padding-top:0}
+.res .medals b{font-size:22pt}
+.res .tot{font-size:8pt;color:var(--mute);margin-top:1.4mm}
+.res .tot b{font-weight:600;color:var(--ink)}
+.cvl .c{display:grid;grid-template-columns:11mm 1fr;column-gap:2.2mm;padding:2.5mm 0;border-top:.2mm solid var(--rule);align-items:start}
+.cvl .c:first-child{border-top:none;padding-top:3.4mm}
+.cvl .n{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:20pt;line-height:.95;color:var(--blue)}
+.cvl .n small{display:block;font:600 7pt 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--mute);margin-bottom:.8mm}
+.cvl h3{font-size:9.8pt;line-height:1.2}
+.cvl .m{font-size:7.8pt;line-height:1.35;color:var(--mute);margin-top:.8mm}
+.cover .cphoto{top:31mm;height:76mm}
+.cover .ctext{top:114mm}
+.cover h1{font-size:22pt;line-height:1.1;margin-top:3.6mm;letter-spacing:-.005em}
+.cover .yrs4{display:flex;justify-content:space-between;margin-top:3.6mm;border-top:.2mm solid rgba(255,255,255,.35);padding-top:2.6mm;font-family:'Playfair Display',serif;font-size:19pt;color:var(--orange);line-height:1}
+.cover .sub{margin-top:3.6mm;width:78mm}
+.flapphoto{width:100%}
 </style>
 <link rel="stylesheet" href="editor/editor.css"></head>
 <body>
@@ -150,34 +186,13 @@ table.fee{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums 
   <div class="back-bg"></div>
   <div class="cover-blue"></div>
   <div class="panel p1"><div class="in spread">
-    <div class="sec"><span class="n">01</span><span class="lab">The School</span></div>
-    <h2>Cookery and hospitality, studied in central Auckland.</h2>
-    <p class="body">PBRS is an <span class="nb">NZQA-registered</span> school for cookery, food and beverage service, and hospitality management, established in 2000. Our campus has large buildings and wide, open training spaces in the Auckland&nbsp;CBD.</p>
-    <div class="recog">
-      <span class="lab">Recognition</span>
-      <div class="t">New Zealand Training Establishment of the Year</div>
-      <div class="years"><span>2014</span><span>2016</span><span>2017</span><span>2018</span></div>
+    <div class="sec"><span class="n">01</span><span class="lab">Our story</span></div>
+    <h2>Established in 2000, recognised across New&nbsp;Zealand.</h2>
+    <img class="photo" src="img/story_g08.jpg" style="height:42mm;object-position:50% 40%" alt="">
+    <div class="tl">
+      <div class="r"><span class="y">2000</span><span class="t"><b>PBRS established</b> in Auckland.</span></div><div class="r"><span class="y">2012</span><span class="t"><b>Best Exporter to India</b> Award, Indian Business Awards, third year running.</span></div><div class="r"><span class="y">2014</span><span class="t"><b>NZ Training Establishment of the Year.</b> <i>New Zealand Culinary Fare Training Excellence Award.</i></span></div><div class="r"><span class="y">2016</span><span class="t"><b>NZ Training Establishment of the Year.</b> <i>NZ Chefs National Salon.</i></span></div><div class="r"><span class="y">2017</span><span class="t"><b>NZ Training Establishment of the Year.</b> <i>NZ Chefs National Hospitality Championships: 45 medals.</i></span></div><div class="r"><span class="y">2018</span><span class="t"><b>NZ Training Establishment of the Year.</b> <i>Training Chef and Training Service Person of the Year.</i></span></div><div class="r"><span class="y">2019</span><span class="t"><b>Auckland Regional Championships:</b> 13 gold, 7 silver, 6 bronze.</span></div>
     </div>
-    <div class="recog">
-      <span class="lab">Auckland Regional Championships 2019</span>
-      <div class="medals">
-        <div><b>13</b><span>Gold</span></div>
-        <div><b>7</b><span>Silver</span></div>
-        <div><b>6</b><span>Bronze</span></div>
-      </div>
-      <p class="note mute" style="margin-top:1.4mm">26 students entered across 13 categories.</p>
-    </div>
-    <div class="path">
-      <span class="lab">Pathway &middot; Level 4 to Level 6</span>
-      <div class="trk"><span class="lab">Cookery</span>
-        <div class="cells"><div class="cell"><b>Level 4</b><span>Certificate in Cookery</span></div><div class="cell"><b>Level 5</b><span>Diploma in Food Preparation and Cookery Supervision</span></div><div class="cell none"></div></div></div>
-      <div class="trk"><span class="lab">Hospitality</span>
-        <div class="cells linked"><div class="cell"><b>Level 4</b><span>Certificate in Food and Beverage Service</span></div><div class="cell"><b>Level 5</b><span>Diploma in Hospitality Management</span></div><div class="cell"><b>Level 6</b><span>Diploma in Hospitality Management</span></div></div></div>
-    </div>
-    <div class="lead">
-      <div><b>Peter Do</b><span>CEO</span></div>
-      <div><b>Michael Corbett</b><span>Principal / Academic Director</span></div>
-    </div>
+    <div class="fact"><span>NZQA-registered</span><span>Auckland CBD</span></div>
   </div></div>
 
   <div class="panel p2 blue"><div class="in spread">
@@ -208,7 +223,8 @@ table.fee{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums 
     <img class="cphoto" src="img/cover_078.jpg" alt="">
     <div class="ctext">
       <div class="kick">Professional Business and Restaurant School</div>
-      <h1>The craft<br>of <em>hospitality.</em></h1>
+      <h1>New Zealand Training Establishment of the&nbsp;<em>Year.</em></h1>
+      <div class="yrs4"><span>2014</span><span>2016</span><span>2017</span><span>2018</span></div>
       <p class="sub">Cookery, food and beverage service, and hospitality management qualifications, taught in the heart of Auckland.</p>
     </div>
     <div class="cfoot"><span>Auckland CBD, New Zealand</span><span>NZQA-registered</span></div>
@@ -218,83 +234,43 @@ table.fee{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums 
 <section class="page" id="inside">
   <div class="field-tint"></div>
   <div class="panel p1"><div class="in spread">
-    <div class="sec"><span class="n">02</span><span class="lab">Courses &middot; Cookery</span></div>
-    <article class="course aside first" style="--aw:31mm;--ah:29mm">
-      <div class="hd"><span class="no">2.1</span><h3>New Zealand Certificate in Cookery</h3></div>
-      <div class="spec"><div><span>Level</span><b>4</b></div><div><span>Qualification</span><b>Certificate</b></div><div class="cr"><span>Credits</span><b>120</b></div><div class="dur"><span>Duration</span><b>1&nbsp;year (36&nbsp;weeks, four 9&#8209;week&nbsp;terms)</b></div></div>
-      <p class="desc">Build the skills to work as a chef in intermediate positions producing complex dishes in a commercial kitchen.</p>
-      <p class="entry"><b>Entry</b>Age 17 or older. Recognition of prior learning may be considered with proof of industry experience. English test or equivalent accepted.</p>
-      <img class="ph" src="img/c1_062.jpg" style="object-position:50% 50%" alt="">
-    </article>
-    <div class="strip" style="grid-template-columns:1fr 1fr"><img src="img/p_018.jpg" style="height:30mm" alt=""><img src="img/p_020.jpg" style="height:30mm" alt=""></div>
-    <article class="course aside" style="--aw:28mm;--ah:31mm">
-      <div class="hd"><span class="no">2.2</span><h3>International Diploma in Food Preparation and Cookery Supervision (Advanced)</h3></div>
-      <div class="spec"><div><span>Level</span><b>5</b></div><div><span>Qualification</span><b>Diploma</b></div><div class="cr"><span>Credits</span><b>On request</b></div><div class="dur"><span>Duration</span><b>2 years</b></div></div>
-      <p class="desc">Advance into supervising food production, menu planning and costing, and event catering.</p>
-      <p class="entry"><b>Entry</b>Age 17 or older. Recognition of prior learning may be considered with proof of industry experience. English test or equivalent accepted.</p>
-      <img class="ph" src="img/a_090.jpg" style="object-position:50% 50%" alt="">
-    </article>
-    <div class="foot center"><img src="img/logo.png" alt="PBRS"></div>
+    <div class="sec"><span class="n">02</span><span class="lab">Awards &amp; recognition</span></div>
+    <div>
+      <h2>Four times Training Establishment of the&nbsp;Year.</h2>
+      <div class="big4"><b>2014</b><b>2016</b><b>2017</b><b>2018</b></div>
+    </div>
+    <img class="photo" src="img/award_g12.jpg" style="height:54mm;object-position:50% 50%" alt="">
+    <div>
+      <div class="hon"><span class="lab">Culinary Fare &middot; 2014</span><div class="h">New Zealand Culinary Fare Training Excellence Award</div></div>
+      <div class="hon"><span class="lab">Indian Business Awards &middot; 2012</span><div class="h">Best Exporter to India</div><div class="s">Won for the third year running.</div></div>
+      <div class="hon"><span class="lab">Individual honours</span><div class="h">Training Chef of the Year, 2017 and 2018</div><div class="s">Training Service Person of the Year, 2018. Cocktail Supreme Champion of the Year, 2017.</div></div>
+    </div>
   </div></div>
 
   <div class="panel p2"><div class="in spread">
-    <div class="sec"><span class="n">03</span><span class="lab">Courses &middot; Service and management</span></div>
-    <article class="course aside first" style="--aw:26mm;--ah:30mm">
-      <div class="hd"><span class="no">2.3</span><h3>New Zealand Certificate in Food and Beverage Service (Restaurant Services)</h3></div>
-      <div class="spec"><div><span>Level</span><b>4</b></div><div><span>Qualification</span><b>Certificate</b></div><div class="cr"><span>Credits</span><b>On request</b></div><div class="dur"><span>Duration</span><b>20&nbsp;weeks, including a 2&#8209;week term&nbsp;break</b></div></div>
-      <p class="desc">Prepare for restaurant service roles with advanced food and beverage service skills.</p>
-      <p class="entry"><b>Entry</b>Age 18 or older (alcohol regulations). Recognition of prior learning may be considered with proof of industry experience. English test or equivalent accepted.</p>
-      <img class="ph" src="img/a_087.jpg" style="object-position:50% 50%" alt="">
-    </article>
-    <article class="course">
-      <div class="hd"><span class="no">2.4</span><h3>New Zealand Diploma in Hospitality Management</h3></div>
-      <div class="spec"><div><span>Level</span><b>5</b></div><div><span>Qualification</span><b>Diploma</b></div><div class="cr"><span>Credits</span><b>On request</b></div><div class="dur"><span>Duration</span><b>1 year</b></div></div>
-      <p class="desc">A one-year route into supervisory and business management, through to starting your own business.</p>
-      <p class="entry"><b>Entry</b>Age 18 or older, with Year 12 or NCEA Level 3 (or equivalent), a Level 4 hospitality qualification, or two years of relevant work experience. English test or equivalent accepted.</p>
-      
-    </article>
-    <div class="block">
-      <span class="lab">Student support</span>
-      <p class="body">Academic guidance, a dedicated Pastoral Care Team, learning support, careers advice and help finding study-related work.</p>
+    <div class="sec"><span class="n">03</span><span class="lab">Championship results</span></div>
+    <div>
+    <div class="res first"><span class="lab">Auckland Regional Championships &middot; 2019</span><div class="h">13 gold, 7 silver, 6 bronze</div><div class="medals"><div><b>13</b><span>Gold</span></div><div><b>7</b><span>Silver</span></div><div><b>6</b><span>Bronze</span></div></div><div class="tot">26 students entered across 13 categories.</div></div>
+    <div class="res"><span class="lab">NZ Chefs National Hospitality Championships &middot; 2017</span><div class="h">45 medals, Training Establishment of the Year</div><div class="medals"><div><b>12</b><span>Gold</span></div><div><b>25</b><span>Silver</span></div><div><b>8</b><span>Bronze</span></div></div></div>
+    <div class="res"><span class="lab">NZ Chefs National Salon &middot; 2016</span><div class="h">33 medals, Training Establishment of the Year</div><div class="medals"><div><b>8</b><span>Gold</span></div><div><b>13</b><span>Silver</span></div><div><b>12</b><span>Bronze</span></div></div></div>
     </div>
-    <div class="block">
-      <span class="lab">Facilities</span>
-      <p class="body">Modern classrooms and computer laboratories, professional commercial training kitchens, a training restaurant, a library and a student lounge.</p>
-    </div>
+    <p class="note mute">2016 and 2017 competition results are Cornell Education Group results.</p>
+    <img class="photo" src="img/team_093.jpg" style="height:46mm;object-position:50% 50%" alt="">
     <div class="foot center"><img src="img/logo.png" alt="PBRS"></div>
   </div></div>
 
   <div class="panel p3"><div class="in spread">
-    <div class="sec"><span class="n">04</span><span class="lab">Courses &middot; Management</span></div>
-    <article class="course first">
-      <div class="hd"><span class="no">2.5</span><h3>New Zealand Diploma in Hospitality Management</h3></div>
-      <div class="spec"><div><span>Level</span><b>6</b></div><div><span>Qualification</span><b>Diploma</b></div><div class="cr"><span>Credits</span><b>120</b></div><div class="dur"><span>Duration</span><b>48&nbsp;weeks including term breaks (four 9&#8209;week&nbsp;terms)</b></div></div>
-      <p class="desc">Develop the strategic, people and financial management skills for senior hospitality roles.</p>
-      <p class="entry"><b>Entry</b>Age 18 or older. Level 5 Hospitality Management, or equivalent with two years of hospitality work experience. Enrolment form and, where needed, an interview. English test or equivalent accepted.</p>
-      
-    </article>
-    <div class="sec2"><span class="n">05</span><span class="lab">Fee schedule</span></div>
-    <div style="margin-top:1mm">
-      <h2>Tuition and fees.</h2>
-      <p class="note mute" style="margin:1.4mm 0 2mm">All amounts in New Zealand dollars (NZD).</p>
-      <table class="fee">
-        <thead><tr><th>Item</th><th>1st year</th><th>2nd year</th></tr></thead>
-        <tbody>
-          <tr><td>Enrolment fee</td><td>500</td><td>&ndash;</td></tr>
-          <tr><td>Tuition</td><td>19,500</td><td>15,000</td></tr>
-          <tr><td>Materials</td><td>3,000</td><td>2,000</td></tr>
-          <tr><td>Insurance</td><td>849</td><td>849</td></tr>
-          <tr class="tot"><td>Total</td><td>23,849</td><td>17,849</td></tr>
-        </tbody>
-      </table>
+    <div class="sec"><span class="n">04</span><span class="lab">Our courses</span></div>
+    <div class="cvl">
+      <div class="c"><div class="n"><small>Level</small>4</div><div><h3>New Zealand Certificate in Cookery</h3><div class="m">Certificate &middot; 1 year, 36 weeks &middot; 120 credits</div></div></div><div class="c"><div class="n"><small>Level</small>5</div><div><h3>International Diploma in Food Preparation and Cookery Supervision (Advanced)</h3><div class="m">Diploma &middot; 2 years</div></div></div><div class="c"><div class="n"><small>Level</small>4</div><div><h3>New Zealand Certificate in Food and Beverage Service (Restaurant Services)</h3><div class="m">Certificate &middot; 20 weeks</div></div></div><div class="c"><div class="n"><small>Level</small>5</div><div><h3>New Zealand Diploma in Hospitality Management</h3><div class="m">Diploma &middot; 1 year</div></div></div><div class="c"><div class="n"><small>Level</small>6</div><div><h3>New Zealand Diploma in Hospitality Management</h3><div class="m">Diploma &middot; 48 weeks &middot; 120 credits</div></div></div>
     </div>
+    <img class="photo" src="img/course_g09.jpg" style="height:34mm;object-position:50% 50%" alt="">
     <div>
-      <p class="body">Hospitality Management Level 5 and Level 6: fees on request, please contact admissions.</p>
-      <p class="note mute" style="margin-top:1.6mm">Fees as advised by PBRS; please confirm with admissions before enrolling.</p>
+      <p class="body">Fees, entry requirements and intake dates for every course: contact admissions. An English test or equivalent is accepted.</p>
     </div>
     <div class="foot"><img src="img/logo.png" alt="PBRS"><div class="fc"><span><b>Tel</b>+64 (09) 367 1010</span><span><b>Email</b>info@pbrs.ac.nz</span><span><b>Web</b>www.pbrs.ac.nz</span></div></div>
   </div></div>
 
 </section>
-<script>window.ED_CONFIG={"id": "a", "title": "PBRS Course Prospectus (Brochure A)", "brand": "PBRS review", "feedbackTo": "zeroinfinityinfotech@gmail.com", "endpoint": "https://ntfy.sh/pbrs-brochure-f0a8e11ac83864a5132b", "pdf": "downloads/PBRS-Course-Prospectus.pdf", "pdfName": "PBRS-Course-Prospectus.pdf", "tabs": [{"label": "Course Prospectus", "href": "./", "on": true}, {"label": "A5 Leaflet", "href": "leaflet/", "on": false}], "widthMm": 303, "maxZoom": 1.3, "captions": ["Outside: flap, back, cover", "Inside"]};</script><script src="editor/editor.js"></script></body>
+<script>window.ED_CONFIG={"pageTitle": "PBRS Brochure: review", "id": "a2", "title": "PBRS Brochure (Awards edition)", "brand": "PBRS review", "feedbackTo": "zeroinfinityinfotech@gmail.com", "endpoint": "https://ntfy.sh/pbrs-brochure-f0a8e11ac83864a5132b", "pdf": "downloads/PBRS-Brochure.pdf", "pdfName": "PBRS-Brochure.pdf", "tabs": [{"label": "Brochure", "href": "./", "on": true}, {"label": "A5 Leaflet", "href": "leaflet/", "on": false}], "widthMm": 303, "maxZoom": 1.3, "captions": ["Outside: flap, back, cover", "Inside"]};</script><script src="editor/editor.js"></script></body>
 </html>
